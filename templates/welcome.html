@@ -2,7 +2,7 @@ o<!DOCTYPE html>
     <head>
         <html lang="en" dir="ltr">
         <meta charset="utf-8">
-        <title>Movie Recommender System</title> 
+        <title>FLIGHT ON-TIME PREDICTION</title> 
             
         <style type="text/css">    
             html { 
@@ -40,6 +40,7 @@ o<!DOCTYPE html>
         <form action="{{ url_for('prediction') }}" method="POST">
             <div>
             <p>
+            <TABLE BORDER=1><tr><td>
             <h2><font color="black"> Please enter a movie id or title </h2>
                 <strong><font size="4" color="black">DATE: </font></strong><br/>
                 <input type="text" id="fdate" name="fdate">
@@ -50,7 +51,8 @@ o<!DOCTYPE html>
                 <strong><font size="4" color="black">Scheduled time of departure: </font></strong>HH:MM<br/>
                 <input type="text" id="fheure" name="fheure">
                 <button type="submit" class="btn btn-success"><font color="black"><strong>Prediction</strong></button>
-            </p>
+                    <td></tr></table>
+                    </p>
             </div>
 
         </form>
