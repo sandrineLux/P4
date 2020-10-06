@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+o<!DOCTYPE html>
     <head>
         <html lang="en" dir="ltr">
         <meta charset="utf-8">
@@ -37,7 +37,7 @@
         {% if error %}
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
-        <form action="{{ url_for('recommendation') }}" method="POST">
+        <form action="{{ url_for('prediction') }}" method="POST">
             <div>
             <p>
             <h2><font color="black"> Please enter a movie id or title </h2>
