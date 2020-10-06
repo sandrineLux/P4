@@ -5,7 +5,7 @@
         <title>Recommendations</title>
         <style type="text/css">    
             html { 
-              background: url(https://image.freepik.com/free-photo/cinema-concept-with-popcorn-background_23-2147989050.jpg) no-repeat center center fixed; 
+              background: url(https://paxex.aero/wp-content/uploads/2020/04/jetblue-tag-flights-cares-act-route-map-watermark.jpg) no-repeat center center fixed; 
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
@@ -43,8 +43,9 @@
         {% extends "template.html" %}
         {% block content %}
         <br>
-            <h1 style="text-align:center;"><font color="red"><strong>Here are the top-10 movies that you'll most probably like:</strong></font></h1>
+            <h1 style="text-align:center;"><font color="red"><strong>Your predicted delay is:</strong></font></h1>
             <p>{{ table }}</p>
+            minutes
             <div>
                 <a href="{{ url_for('welcome') }}">Get another flight delay prediction</a>
             </div>
