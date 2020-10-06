@@ -1,1 +1,1 @@
-web: gunicorn flights-delay-pred:app
+web: gunicorn Flights_Delays:app
