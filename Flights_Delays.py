@@ -207,25 +207,6 @@ def prediction():
 
             pred_delay = ridge_mod.predict(pd.DataFrame(input))
             return int(pred_delay[0])
-        
-       
-        def recommend(m_or_i):
-            m_or_i = m_or_i.lower()
-            if m_or_i in df['Id'].unique():
-                m = df.iloc[int(m_or_i)]['movie_title']
-                m = m.lower()
-            elif m_or_i in df['movie_title'].str.lower().unique():
-                m = m_or_i
-            else:
-                print('Ce film n''est pas dans notre database. Veuillez choisir un autre film.')
-                raise ValueError('The film is not in our database. Please choose another film.')
-
-            i = df.loc[df['movie_title'].str.lower() == m].index[0]
-            cluster = df.iloc[i]['cluster'] 
-            dfresult = df[(df.cluster==cluster) & (df.movie_title.str.lower() != m)].sort_values('score', ascending=False).head(20)
-            dfresult = dfresult.sample(5)
-            dfresult = dfresult.reset_index()
-            return (dfresult['movie_title'])
 
         try:
             output = predict_delay(DateHour,Origin,Dest)
