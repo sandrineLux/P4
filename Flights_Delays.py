@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from flask_table import Table, Col
 
-#building flask table for showing recommendation results
+#building flask table for showing prediction results
 class Results(Table):
     id = Col('Id',show=False)
     title = Col('movie_title')
@@ -18,7 +18,7 @@ def welcome():
     return render_template('welcome.html')
 
 #Results Page
-@app.route("/recommendation", methods=["GET", "POST"])
+@app.route("/prediction", methods=["GET", "POST"])
 def recommendation():
     if request.method == 'POST':
         
