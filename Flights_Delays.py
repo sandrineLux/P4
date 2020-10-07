@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import pandas as pd
 import numpy as np
 from flask_table import Table, Col
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import Ridge
 
 #building flask table for showing prediction results
 class Results(Table):
@@ -24,6 +26,20 @@ def prediction():
         
         #reading the original dataset
         df = pd.read_csv('flights_B6.csv')
+        df['DAY_OF_WEEK'] = df['DAY_OF_WEEK'].astype(int)
+        df['DAY_OF_MONTH'] = df['DAY_OF_MONTH'].astype(int)
+        df['CRS_DEP_TIME'] = df['CRS_DEP_TIME'].astype(int)
+        df['ARR_DELAY'] = df['ARR_DELAY'].astype(int)
+        df = pd.get_dummies(df, columns = ['DEST'])
+        df = pd.get_dummies(df, columns = ['ORIGIN'])
+        
+        X = df.drop('ARR_DELAY',axis=1)
+        y = df.ARR_DELAY
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
+        
+        ridge = linear_model.Ridge()
+        ridge.set_params(alpha=48.24)
+        ridge.fit(X_train, y_train)
 
         #reading movie title given by user in the front-end
         Date = request.form.get('fdate')
