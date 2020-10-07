@@ -206,7 +206,7 @@ def prediction():
              # Now predict this with the model 
 
             pred_delay = ridge_mod.predict(pd.DataFrame(input))
-            return render_template('prediction.html', int(pred_delay[0]))
+            return int(pred_delay[0])
         
        
         def recommend(m_or_i):
