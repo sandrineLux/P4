@@ -44,7 +44,7 @@
         {% block content %}
         <br>
             <h1 style="text-align:center;"><font color="black"><strong>Your predicted delay is:</strong></font></h1>
-            <p>{{ table }}</p>
+            <p>{{ output }}</p>
             minutes
             <div>
                 <a href="{{ url_for('welcome') }}">Get another flight delay prediction</a>
