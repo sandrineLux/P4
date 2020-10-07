@@ -46,6 +46,7 @@ def prediction():
         Origin = request.form.get('forigin')
         Dest = request.form.get('fdest')
         Hour = request.form.get('fhour')
+        DateHour = Date + " " + Hour
         
         def predict_delay(departure_date_time,origin, destination):
             from datetime import datetime
@@ -228,7 +229,7 @@ def prediction():
 
         #printing top-10 recommendations
         try:
-            output = predict_delay(Date + " " + Hour,Origin,Dest)
+            output = predict_delay(DateHour,Origin,Dest)
             return render_template('prediction.html', output)
         except ValueError as e:
             return render_template('welcome.html', error=e)
