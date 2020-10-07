@@ -26,6 +26,7 @@ def prediction():
         
         #reading the original dataset
         df = pd.read_csv('flights_B6.csv')
+        df = df.drop('Unnamed: 0', axis = 1)
         df['DAY_OF_WEEK'] = df['DAY_OF_WEEK'].astype(int)
         df['DAY_OF_MONTH'] = df['DAY_OF_MONTH'].astype(int)
         df['CRS_DEP_TIME'] = df['CRS_DEP_TIME'].astype(int)
