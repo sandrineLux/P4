@@ -32,14 +32,20 @@
         {% extends "template.html" %}
         {% block content %}
         <br>
-        <TABLE BORDER=2 style="width:100%;text-align:left;background-color:white;"><tr><td>
-            <h1 style="text-align:center;"><font color="black"><strong>Your predicted delay is:</strong></font></h1>
-            <p>{{ output }}</p>
-            minutes
-            <div>
-                <a href="{{ url_for('welcome') }}">Get another flight delay prediction</a>
-            </div>
-            </td></tr><table>
+        <TABLE BORDER=2 style="width:100%;text-align:left;background-color:white;">
+            <tr>
+                <td>
+                    <h1 style="text-align:center;"><font color="black"><strong>Your predicted delay is:&nbsp&nbsp{{ output }}&nbsp&nbspminutes</strong></font></h1>
+                </td>
+            <tr>
+            <tr>
+                <td>
+                    <div>
+                        <a href="{{ url_for('welcome') }}">Get another flight delay prediction</a>
+                    </div>
+                </td>
+            </tr>
+        <table>
         {% endblock %}
     </body>
 </html>
