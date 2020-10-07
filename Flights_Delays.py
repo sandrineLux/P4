@@ -19,7 +19,7 @@ def welcome():
 
 #Results Page
 @app.route("/prediction", methods=["GET", "POST"])
-def recommendation():
+def prediction():
     if request.method == 'POST':
         
         #reading the original dataset
