@@ -46,7 +46,7 @@ def prediction():
         Origin = request.form.get('forigin')
         Dest = request.form.get('fdest')
         Hour = request.form.get('fhour')
-        DateHour = Date + " " + Hour
+        DateHour = str(Date) + ' ' + str(Hour)
         
         def predict_delay(departure_date_time,origin, destination):
             from datetime import datetime
