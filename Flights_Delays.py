@@ -53,7 +53,7 @@ def prediction():
             try:
                 departure_date_time_parsed = datetime.strptime(departure_date_time, '%d/%m/%Y %H:%M:%S')
             except ValueError as e:
-                return 'Error parsing date/time - {}'.format(e)
+                return 'Error parsing date/time - {}'.format(e) + ' ' + departure_date_time
 
             month = departure_date_time_parsed.month
             day = departure_date_time_parsed.day
@@ -227,7 +227,6 @@ def prediction():
             dfresult = dfresult.reset_index()
             return (dfresult['movie_title'])
 
-        #printing top-10 recommendations
         try:
             output = predict_delay(DateHour,Origin,Dest)
             return render_template('prediction.html', output=output)
