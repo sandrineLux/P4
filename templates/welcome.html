@@ -38,9 +38,6 @@
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
         <form action="{{ url_for('prediction') }}" method="POST">
-            <div>
-            <p>
-                <center>
                 <TABLE BORDER=2>
                     <tr>
                         <td colspan=3 align="center"><h1 style="text-align:center;"><font color="white" size=16> FLIGHT ON-TIME PREDICTION </font></h1></td>
@@ -219,10 +216,6 @@
                         <td>&nbsp</td>
                     </tr>
                 </table>
-                </center>
-            </p>
-            </div>
-
         </form>
         {% endblock %}
     </body>
