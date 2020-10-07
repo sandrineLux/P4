@@ -40,19 +40,100 @@
         <form action="{{ url_for('prediction') }}" method="POST">
             <div>
             <p>
-            <TABLE BORDER=1><tr><td>
             <h2><font color="black"> Please enter a movie id or title </h2>
-                <strong><font size="4" color="black">DATE: </font></strong><br/>
-                <input type="text" id="fdate" name="fdate">
-                <strong><font size="4" color="black">Departure airport: </font></strong><br/>
-                <input type="text" id="forigin" name="forigin">
-                <strong><font size="4" color="black">Destination airport: </font></strong><br/>
-                <input type="text" id="fdest" name="fdest">
-                <strong><font size="4" color="black">Scheduled time of departure: </font></strong>HH:MM<br/>
-                <input type="text" id="fheure" name="fheure">
-                <button type="submit" class="btn btn-success"><font color="black"><strong>Prediction</strong></button>
-                    <td></tr></table>
-                    </p>
+            
+                <TABLE BORDER=2>
+                    <tr>
+                        <td><strong><font size="4" color="black">DATE: </font></strong></td>
+                        <td><input type="text" id="fdate" name="fdate"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><font size="4" color="black">Departure airport: </font></strong></td>
+                        <td>
+                            <select name="forigin">
+                                <option value ="ABQ">Nothing</option>
+                                <option value ="ACK">Nothing</option>
+                                <option value ="ALB">Nothing</option>
+                                <option value ="ANC">Nothing</option>
+                                <option value ="AUS">Nothing</option>
+                                <option value ="BDL">Nothing</option>
+                                <option value ="BNA">Nothing</option>
+                                <option value ="BOS">Nothing</option>
+                                <option value ="BQN">Nothing</option>
+                                <option value ="BTV">Nothing</option>
+                                <option value ="BUF">Nothing</option>
+                                <option value ="BUR">Nothing</option>
+                                <option value ="BWI">Nothing</option>
+                                <option value ="CHS">Nothing</option>
+                                <option value ="CLE">Nothing</option>
+                                <option value ="CLT">Nothing</option>
+                                <option value ="DAB">Nothing</option>
+                                <option value ="DCA">Nothing</option>
+                                <option value ="DEN">Nothing</option>
+                                <option value ="DFW">Nothing</option>
+                                <option value ="DTW">Nothing</option>
+                                <option value ="EWR">Nothing</option>
+                                <option value ="FLL">Nothing</option>
+                                <option value ="HPN">Nothing</option>
+                                <option value ="HOU">Nothing</option>
+                                <option value ="HYA">Nothing</option>
+                                <option value ="IAD">Nothing</option>
+                                <option value ="JAX">Nothing</option>
+                                <option value ="JFK">Nothing</option>
+                                <option value ="LAS">Nothing</option>
+                                <option value ="LAX">Nothing</option>
+                                <option value ="LGA">Nothing</option>
+                                <option value ="LGB">Nothing</option>
+                                <option value ="MCO">Nothing</option>
+                                <option value ="MSY">Nothing</option>
+                                <option value ="MVY">Nothing</option>
+                                <option value ="OAK">Nothing</option>
+                                <option value ="ORD">Nothing</option>
+                                <option value ="ORH">Nothing</option>
+                                <option value ="PBI">Nothing</option>
+                                <option value ="PDX">Nothing</option>
+                                <option value ="PHL">Nothing</option>
+                                <option value ="PHX">Nothing</option>
+                                <option value ="PIT">Nothing</option>
+                                <option value ="PSE">Nothing</option>
+                                <option value ="PSP">Nothing</option>
+                                <option value ="PVD">Nothing</option>
+                                <option value ="PWM">Nothing</option>
+                                <option value ="RDU">Guava</option>
+                                <option value ="RIC">Guava</option>
+                                <option value ="RNO">Guava</option>
+                                <option value ="ROC">Guava</option>
+                                <option value ="RSW">Guava</option>
+                                <option value ="SAN">Guava</option>
+                                <option value ="SAV">Guava</option>
+                                <option value ="SEA">Guava</option>
+                                <option value ="SFO">Guava</option>
+                                <option value ="SJC">Guava</option>
+                                <option value ="SJU">Guava</option>
+                                <option value ="SLC">Guava</option>
+                                <option value ="SMF">Guava</option>
+                                <option value ="SRQ">Guava</option>
+                                <option value ="STT">Guava</option>
+                                <option value ="STX">Guava</option>
+                                <option value ="SWF">Guava</option>
+                                <option value ="SYR">Guava</option>
+                                <option value ="TPA">Lychee</option>
+                            </select> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong><font size="4" color="black">Destination airport: </font></strong></td>
+                        <td><input type="text" id="fdest" name="fdest"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><font size="4" color="black">Scheduled time of departure: </font></strong>HH:MM</td>
+                        <td><input type="text" id="fheure" name="fheure"></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-success"><font color="black"><strong>Prediction</strong></button></td>
+                    </tr>
+                </table>
+            </p>
             </div>
 
         </form>
