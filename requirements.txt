@@ -4,4 +4,3 @@ numpy
 flask_table
 sklearn
 gunicorn
-linear_model
