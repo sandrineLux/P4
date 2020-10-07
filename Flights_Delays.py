@@ -230,7 +230,7 @@ def prediction():
         #printing top-10 recommendations
         try:
             output = predict_delay(DateHour,Origin,Dest)
-            return render_template('prediction.html', output)
+            return render_template('prediction.html', output=output)
         except ValueError as e:
             return render_template('welcome.html', error=e)
 
