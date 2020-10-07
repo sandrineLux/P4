@@ -37,9 +37,9 @@ def prediction():
         y = df.ARR_DELAY
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
         
-        ridge = Ridge()
-        ridge.set_params(alpha=48.24)
-        ridge.fit(X_train, y_train)
+        ridge_mod = Ridge()
+        ridge_mod.set_params(alpha=48.24)
+        ridge_mod.fit(X_train, y_train)
 
         #reading movie title given by user in the front-end
         Date = request.form.get('fdate')
