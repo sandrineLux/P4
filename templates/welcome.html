@@ -33,22 +33,21 @@
         {% extends "template.html" %}
         {% block content %}
         <br>
-        <h1 style="text-align:center;"><font color="red"> Welcome to the Movie Recommender </h1>
+        <h1 style="text-align:center;"><font color="blue"> FLIGHT ON-TIME PREDICTION </h1>
         {% if error %}
             <p class=error><strong>Error:</strong> {{ error }}
         {% endif %}
         <form action="{{ url_for('prediction') }}" method="POST">
             <div>
             <p>
-            <h2><font color="black"> Please enter a movie id or title </h2>
-            
                 <TABLE BORDER=2>
                     <tr>
-                        <td><strong><font size="4" color="black">DATE: </font></strong></td>
+                        <td align="right"><strong><font size="4" color="black">DATE: </font></strong></td>
                         <td><input type="text" id="fdate" name="fdate"></td>
+                        <td>DD/MM/YYYY</td>
                     </tr>
                     <tr>
-                        <td><strong><font size="4" color="black">Departure airport: </font></strong></td>
+                        <td align="right"><strong><font size="4" color="black">Departure airport: </font></strong></td>
                         <td>
                             <select name="forigin">
                                 <option value ="ABQ">Albuquerque International Sunport</option>
@@ -120,9 +119,10 @@
                                 <option value ="TPA">Tampa International Airport</option>
                             </select> 
                         </td>
+                        <td>&nbsp</td>
                     </tr>
                     <tr>
-                        <td><strong><font size="4" color="black">Destination airport: </font></strong></td>
+                        <td align="right"><strong><font size="4" color="black">Destination airport: </font></strong></td>
                         <td>
                             <select name="fdest">
                                 <option value ="ABQ">Albuquerque International Sunport</option>
@@ -194,13 +194,17 @@
                                 <option value ="TPA">Tampa International Airport</option>
                             </select>
                         </td>
+                        <td>&nbsp</td>
                     </tr>
                     <tr>
-                        <td><strong><font size="4" color="black">Scheduled time of departure: </font></strong>HH:MM</td>
+                        <td align="right"><strong><font size="4" color="black">Scheduled time of departure: </font></strong>HH:MM</td>
                         <td><input type="text" id="fheure" name="fheure"></td>
+                        <td>HH:mm</td>
                     </tr>
                     <tr>
+                        <td>&nbsp</td>
                         <td><button type="submit" class="btn btn-success"><font color="black"><strong>Prediction</strong></button></td>
+                        <td>&nbsp</td>
                     </tr>
                 </table>
             </p>
