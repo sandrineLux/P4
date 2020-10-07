@@ -23,7 +23,6 @@ def welcome():
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
     if request.method == 'POST':
-        
         #reading the original dataset
         df = pd.read_csv('flights_B6.csv')
         df = df.drop('Unnamed: 0', axis = 1)
