@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def welcome():
     if request.method=="POST":
-        return render_template('recommendation.html')
+        return render_template('prediction.html')
     return render_template('welcome.html')
 
 #Results Page
@@ -51,7 +51,7 @@ def recommendation():
             output = recommend(Movie)
             table = Results(output)
             table.border = True
-            return render_template('recommendation.html', table=table)
+            return render_template('prediction.html', table=table)
         except ValueError as e:
             return render_template('welcome.html', error=e)
 
