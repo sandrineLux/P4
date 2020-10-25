@@ -43,27 +43,26 @@ def prediction():
         lasso_mod.fit(X_train, y_train)
 
         #reading movie title given by user in the front-end
-        Date = request.form.get('fdate')
+        DateDep = request.form.get('fdate')
         Origin = request.form.get('forigin')
         Dest = request.form.get('fdest')
         HourDep = request.form.get('fhourdep')
         HourArr = request.form.get('fhourarr')
-        DateHourDep = str(Date) + ' ' + str(HourArr)
-        DateHourArr = str(Date) + ' ' + str(HourDep)
         
-        def predict_delay(departure_date_time,arrival_date_time,origin, destination):
+        def predict_delay(departure_date,departure_time,arrival_time,origin,destination):
             from datetime import datetime
             try:
-                departure_date_time_parsed = datetime.strptime(departure_date_time, '%d/%m/%Y %H:%M:%S')
-                arrival_date_time_parsed = datetime.strptime(arrival_date_time, '%d/%m/%Y %H:%M:%S')
+                departure_date_parsed = datetime.strptime(departure_date, '%d/%m/%Y')
+                departure_time_parsed = datetime.strptime(departure_time, '%H:%M')
+                arrival_time_parsed = datetime.strptime(arrival_time, '%H:%M')
             except ValueError as e:
                 return 'Error parsing date/time - {}'.format(e) 
 
-            month = departure_date_time_parsed.month
-            day = departure_date_time_parsed.day
-            day_of_week = departure_date_time_parsed.isoweekday()
-            hour_dep = departure_date_time_parsed.hour
-            hour_arrival = arrival_date_time_parsed.hour
+            month = departure_date_parsed.month
+            day = departure_date_parsed.day
+            day_of_week = departure_date_parsed.isoweekday()
+            hour_departure = departure_time_parsed.hour
+            hour_arrival = arrival_time_parsed.hour
 
             origin = origin.upper()
             destination = destination.upper()
@@ -133,6 +132,7 @@ def prediction():
               'ORIGIN_STX': 1 if origin == 'STX' else 0, 
               'ORIGIN_SWF': 1 if origin == 'SWF' else 0, 
               'ORIGIN_SYR': 1 if origin == 'SYR' else 0,
+              'ORIGIN_TPA': 1 if origin == 'TPA' else 0,
               'DEST_ABQ': 1 if destination == 'ABQ' else 0,
               'DEST_ALB': 1 if destination == 'ALB' else 0,
               'DEST_AUS': 1 if destination == 'AUS' else 0, 
@@ -193,15 +193,17 @@ def prediction():
               'DEST_STT': 1 if destination == 'STT' else 0, 
               'DEST_STX': 1 if destination == 'STX' else 0, 
               'DEST_SWF': 1 if destination == 'SWF' else 0, 
-              'DEST_SYR': 1 if destination == 'SYR' else 0}]
+              'DEST_SYR': 1 if destination == 'SYR' else 0,
+              'DEST_TPA': 1 if destination == 'TPA' else 0}]
 
              # Now predict this with the model 
 
-            pred_delay = lasso_mod.predict(pd.DataFrame(input))
+            model_lasso = Lasso(alpha=0.6)      
+            pred_delay = model_lasso.predict(pd.DataFrame(input))
             return int(pred_delay[0])
 
         try:
-            output = predict_delay(DateHour,Origin,Dest)
+            output = predict_delay(DateDep,HourDep,HourArr,Origin,Dest)
             return render_template('prediction.html', output=output)
         except ValueError as e:
             return render_template('welcome.html', error=e)
