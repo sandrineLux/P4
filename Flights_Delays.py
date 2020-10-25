@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from flask_table import Table, Col
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Lasso
 
 #building flask table for showing prediction results
 class Results(Table):
