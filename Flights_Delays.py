@@ -29,6 +29,7 @@ def prediction():
         df['DAY_OF_WEEK'] = df['DAY_OF_WEEK'].astype(int)
         df['DAY_OF_MONTH'] = df['DAY_OF_MONTH'].astype(int)
         df['CRS_DEP_TIME'] = df['CRS_DEP_TIME'].astype(int)
+        df['CRS_ARR_TIME'] = df['CRS_DEP_TIME'].astype(int)
         df['ARR_DELAY'] = df['ARR_DELAY'].astype(int)
         df = pd.get_dummies(df, columns = ['DEST'])
         df = pd.get_dummies(df, columns = ['ORIGIN'])
@@ -37,35 +38,39 @@ def prediction():
         y = df.ARR_DELAY
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
         
-        ridge_mod = Ridge()
-        ridge_mod.set_params(alpha=48.24)
-        ridge_mod.fit(X_train, y_train)
+        lasso_mod = Lasso()
+        lasso_mod.set_params(alpha=0.6)
+        lasso_mod.fit(X_train, y_train)
 
         #reading movie title given by user in the front-end
         Date = request.form.get('fdate')
         Origin = request.form.get('forigin')
         Dest = request.form.get('fdest')
-        Hour = request.form.get('fhour')
-        DateHour = str(Date) + ' ' + str(Hour)
+        HourDep = request.form.get('fhourdep')
+        HourArr = request.form.get('fhourarr')
+        DateHourDep = str(Date) + ' ' + str(HourArr)
+        DateHourArr = str(Date) + ' ' + str(HourDep)
         
-        def predict_delay(departure_date_time,origin, destination):
+        def predict_delay(departure_date_time,arrival_date_time,origin, destination):
             from datetime import datetime
             try:
                 departure_date_time_parsed = datetime.strptime(departure_date_time, '%d/%m/%Y %H:%M:%S')
+                arrival_date_time_parsed = datetime.strptime(arrival_date_time, '%d/%m/%Y %H:%M:%S')
             except ValueError as e:
-                return 'Error parsing date/time - {}'.format(e) + ' ' + departure_date_time
+                return 'Error parsing date/time - {}'.format(e) 
 
             month = departure_date_time_parsed.month
             day = departure_date_time_parsed.day
             day_of_week = departure_date_time_parsed.isoweekday()
-            hour = departure_date_time_parsed.hour
-            hour_arrival = departure_date_time_parsed.hour
+            hour_dep = departure_date_time_parsed.hour
+            hour_arrival = arrival_date_time_parsed.hour
 
             origin = origin.upper()
             destination = destination.upper()
 
             input = [{'MONTH': month,
-                      'CRS_DEP_TIME': hour,
+                      'CRS_DEP_TIME': hour_dep,
+                      'CRS_ARR_TIME': hour_arr,
                       'DAY_OF_MONTH': month,
                       'DAY_OF_WEEK': day_of_week,
                       'ORIGIN_BQN': 1 if origin == 'BQN' else 0,
@@ -205,7 +210,7 @@ def prediction():
 
              # Now predict this with the model 
 
-            pred_delay = ridge_mod.predict(pd.DataFrame(input))
+            pred_delay = lasso_mod.predict(pd.DataFrame(input))
             return int(pred_delay[0])
 
         try:
