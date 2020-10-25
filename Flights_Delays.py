@@ -68,7 +68,8 @@ def prediction():
             destination = destination.upper()
 
             input = [{'MONTH': month,
-                     'CRS_DEP_TIME': hour,
+                     'CRS_DEP_TIME': hour_departure,
+                     'CRS_ARR_TIME': hour_arrival,
                      'DAY_OF_MONTH': month,
                      'DAY_OF_WEEK': day_of_week,
                      'ORIGIN_ABQ': 1 if origin == 'ABQ' else 0,
