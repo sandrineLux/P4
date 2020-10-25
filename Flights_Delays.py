@@ -30,7 +30,7 @@ def prediction():
         df['DAY_OF_MONTH'] = df['DAY_OF_MONTH'].astype(int)
         df['CRS_DEP_TIME'] = df['CRS_DEP_TIME'].astype(int)
         df['CRS_ARR_TIME'] = df['CRS_DEP_TIME'].astype(int)
-        df['ARR_DELAY'] = df['ARR_DELAY'].astype(int)
+        df['DEP_DELAY'] = df['DEP_DELAY'].astype(int)
         df = pd.get_dummies(df, columns = ['DEST'])
         df = pd.get_dummies(df, columns = ['ORIGIN'])
         
