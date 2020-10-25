@@ -67,7 +67,7 @@ def prediction():
             origin = origin.upper()
             destination = destination.upper()
 
-           input = [{'MONTH': month,
+            input = [{'MONTH': month,
                      'CRS_DEP_TIME': hour,
                      'DAY_OF_MONTH': month,
                      'DAY_OF_WEEK': day_of_week,
