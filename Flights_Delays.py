@@ -35,7 +35,7 @@ def prediction():
         df = pd.get_dummies(df, columns = ['ORIGIN'])
         
         X = df.drop('ARR_DELAY',axis=1)
-        y = df.ARR_DELAY
+        y = df.DEP_DELAY
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
         
         lasso_mod = Lasso()
