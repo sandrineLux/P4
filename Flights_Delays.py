@@ -36,11 +36,9 @@ def prediction():
         
         X = df.drop('DEP_DELAY',axis=1)
         y = df.DEP_DELAY
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) 
         
-        lasso_mod = Lasso()
-        lasso_mod.set_params(alpha=0.6)
-        lasso_mod.fit(X_train, y_train)
+        model_lasso = Lasso(alpha=0.6)      
+        model_lasso.fit(X, y)
 
         #reading movie title given by user in the front-end
         DateDep = request.form.get('fdate')
@@ -198,8 +196,6 @@ def prediction():
                       'DEST_TPA': 1 if destination == 'TPA' else 0}]
 
              # Now predict this with the model 
-
-            model_lasso = Lasso(alpha=0.6)      
             pred_delay = model_lasso.predict(pd.DataFrame(input))
             return int(pred_delay[0])
 
